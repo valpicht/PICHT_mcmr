@@ -1,0 +1,4 @@
+substrate_format,repeat_id,TE,direction_name,gradient_x,gradient_y,gradient_z,manual_timestep_ms,n_inside_spins,n_outside_spins,inside_ADC,inside_intercept,outside_ADC,outside_intercept
+csv,1,40,x,1.0,0.0,0.0,0.01,389,611,0.36669386670180926,-0.004825606326756937,NaN,NaN
+csv,1,40,y,0.0,1.0,0.0,0.01,389,611,0.32751267198462214,-0.004315222475233443,NaN,NaN
+csv,1,40,z,0.0,0.0,1.0,0.01,389,611,0.35685469815383625,-0.003286762802915899,NaN,NaN

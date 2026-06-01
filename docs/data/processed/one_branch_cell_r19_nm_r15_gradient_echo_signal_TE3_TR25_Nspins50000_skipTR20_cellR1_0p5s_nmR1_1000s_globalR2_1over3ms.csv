@@ -1,0 +1,4 @@
+subset,signal_abs_transverse,NSPINS,SKIP_TR,TE_ms,TR_ms,R1_cell_s^-1,R1_nm_total_s^-1,R2_global_ms^-1,T2_global_ms
+inside_cell,833.1195817980501,50000,20,3,25,0.5,1000.0,0.3333333333333333,3.0
+inside_neuromelanin,445.20196964041156,50000,20,3,25,0.5,1000.0,0.3333333333333333,3.0
+outside_neuromelanin,388.12515390492143,50000,20,3,25,0.5,1000.0,0.3333333333333333,3.0

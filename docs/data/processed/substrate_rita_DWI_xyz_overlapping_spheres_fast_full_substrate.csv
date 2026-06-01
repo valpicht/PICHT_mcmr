@@ -1,0 +1,7 @@
+substrate_format,repeat_id,TE,direction_name,gradient_x,gradient_y,gradient_z,b,manual_timestep_ms,n_inside_spins,n_outside_spins,inside_signal,inside_ln_S_over_S0,outside_signal,outside_ln_S_over_S0
+csv,1,40,x,1.0,0.0,0.0,0.0,0.01,405,595,405.0,0.0,NaN,NaN
+csv,1,40,x,1.0,0.0,0.0,1.0,0.01,405,595,303.13750670274493,-0.2897005470403797,NaN,NaN
+csv,1,40,y,0.0,1.0,0.0,0.0,0.01,405,595,405.0,0.0,NaN,NaN
+csv,1,40,y,0.0,1.0,0.0,1.0,0.01,405,595,302.7590251405319,-0.2909498745791595,NaN,NaN
+csv,1,40,z,0.0,0.0,1.0,0.0,0.01,405,595,405.0,0.0,NaN,NaN
+csv,1,40,z,0.0,0.0,1.0,1.0,0.01,405,595,294.24925344478174,-0.31945985811539795,NaN,NaN

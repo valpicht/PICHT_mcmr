@@ -1,0 +1,71 @@
+output_path /home/valentine/project/Grow_neurons/results/cell_soma_r19_one_branche
+
+####_Cell_parameters_####
+####_soma_radius19_two_branches_vox_sizes_83_83_83_####
+soma_radius 19
+vox_sizes 83 83 83
+nb_process_populations 1
+
+####_Process_parameters_####
+##_Cell_growth_limits_##
+branching_order 0
+ICVF_dendrites 0.1
+
+##_Number_of_primary_processes_##
+nb_processes_mean 1
+
+##_Primary_process_orientations_##
+oriented_processes 1
+process_orientations 1 0 0
+process_orientation_std 0
+
+##_Tapering_##
+tapering 0
+tapering_radius_start 2
+tapering_radius_start_std 0
+tapering_length 0
+tapering_length_std 0
+tapering_in_secondary_processes 0
+
+##_Process_radius_##
+process_radius_mean 2
+process_radius_std 0
+process_radius_cv 0
+process_radius_correlation_length 5
+process_beading_distance_from_soma 0
+
+##_Segment_length_##
+segment_length_mean 20
+segment_length_std 0
+segment_length_reduction_factor_per_branching_order 1
+
+##_Branch_angle_##
+branch_angle_mean 0
+branch_angle_std 0
+
+##_Undulation_##
+undulation 0
+undulation_std 0
+undulation_curvature_std 0
+undulation_correlation_length 0
+undulation_steering_length 0
+
+##_Protrusions_##
+protrusions 0
+protrusion_head_radius_mean 0.3
+protrusion_head_radius_std 0
+protrusion_neck_length_mean .3
+protrusion_neck_length_std 0
+protrusion_relative_volume_fraction 0.0
+
+####_Configuration_####
+sphere_overlap 4
+nb_neurons 1
+branching_order_limits_process_growth 1
+collision_overlap_tolerance 0
+debug 0
+
+####_To_be_removed_###
+dist_from_borders 0
+
+<END>

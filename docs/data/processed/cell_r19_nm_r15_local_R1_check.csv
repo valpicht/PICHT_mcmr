@@ -1,0 +1,4 @@
+label,x,y,z,inside_cell,inside_neuromelanin,global_R1,cell_R1_inside,nm_R1_inside,expected_local_R1
+cell_first_sphere_center,41.5,41.5,41.5,true,true,0.0,0.0005,0.001,0.0015
+neuromelanin_first_sphere_center,41.5,41.5,41.5,true,true,0.0,0.0005,0.001,0.0015
+outside_point,141.5,141.5,141.5,false,false,0.0,0.0005,0.001,0.0

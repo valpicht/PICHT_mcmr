@@ -1,0 +1,4 @@
+label,x,y,z,R1_ms^-1,R1_s^-1,T1_s
+Outside voxel/cell,-40.0,-40.0,-40.0,0.0,0.0,Inf
+"Inside branch / cell only, outside neuromelanin",25.0,0.0,0.0,0.0005,0.5,2.0
+Inside neuromelanin,0.0,0.0,0.0,0.0005,0.5,2.0

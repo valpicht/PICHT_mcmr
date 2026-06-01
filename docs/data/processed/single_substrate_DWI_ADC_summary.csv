@@ -1,0 +1,4 @@
+substrate_name,substrate_format,TE,direction_name,gradient_x,gradient_y,gradient_z,repeat,nspins,n_inside_spins,n_outside_spins,ADC,intercept
+cell_soma_r19_one_branche_neurons_list_new,swc,40,x,1.0,0.0,0.0,1,258,258,742,0.7467510038615436,-0.0025382110834295535
+cell_soma_r19_one_branche_neurons_list_new,swc,40,y,0.0,1.0,0.0,1,258,258,742,0.7353546482816169,-0.003808923850475543
+cell_soma_r19_one_branche_neurons_list_new,swc,40,z,0.0,0.0,1.0,1,258,258,742,0.704698565226739,-0.00043735339991923805
