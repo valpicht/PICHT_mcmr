@@ -1,0 +1,143 @@
+# 04 — Overlapping spheres
+
+This folder contains the first scripts using the overlapping-sphere substrate representation implemented during the project.
+
+The goal is to move from triangular mesh substrates to a sphere-based representation where multiple spheres can overlap and together define a single biological-like object.
+
+This is an important step because SWC files naturally describe neurite-like geometries as connected points with radii. These points can be interpreted as spheres, and allowing overlap makes it possible to approximate a continuous cellular substrate.
+
+## Required input
+
+The scripts expect at least one SWC file in:
+
+```text
+substrate_generation/example_outputs/
+```
+
+For example:
+
+```text
+substrate_generation/example_outputs/one_soma_list_new.swc
+```
+
+If the file is missing, copy it from the substrate generation output, for example:
+
+```bash
+cp ~/project/Grow_neurons/results/one_soma_list_new.swc \
+   substrate_generation/example_outputs/
+```
+
+Other `.swc` files can also be used. In the scripts, the substrate is selected with:
+
+```julia
+const SWC_NAME = "one_soma_list_new"
+```
+
+The `.swc` extension is optional.
+
+## Utility file
+
+### `utils_overlapping.jl`
+
+This file contains helper functions reused by the overlapping-sphere scripts.
+
+It includes functions to:
+
+- build relative paths to SWC files;
+- read SWC files;
+- extract sphere positions and radii;
+- create MCMR `Spheres` geometries;
+- create an MCMR `Spheres` geometry with `overlapping = true`;
+- create a bounding box around the spheres;
+- generate random spins;
+- count inside/outside spins;
+- create DWI sequences and simulations;
+- run b-value sweeps;
+- normalize signals by `S(0)`;
+- save signal results to CSV.
+
+This avoids repeating the same code in every script and avoids absolute paths such as:
+
+```text
+/home/valentine/project/...
+```
+
+## Scripts
+
+### `01_create_overlapping_spheres.jl`
+
+Loads an SWC file, extracts sphere positions and radii, creates an overlapping-sphere geometry, and checks how many randomly generated spins are inside or outside the geometry.
+
+Run with:
+
+```bash
+julia +1.11 --project=. docs/scripts/04_overlapping_spheres/01_create_overlapping_spheres.jl
+```
+
+This script is mainly a smoke test to verify that the SWC-to-overlapping-spheres conversion works.
+
+### `02_run_dwi_overlapping_spheres.jl`
+
+Runs a first diffusion-weighted simulation on the overlapping-sphere substrate.
+
+Run with:
+
+```bash
+julia +1.11 --project=. docs/scripts/04_overlapping_spheres/02_run_dwi_overlapping_spheres.jl
+```
+
+Outputs:
+
+```text
+docs/data/processed/overlapping_spheres_signal_vs_b_data.csv
+docs/figures/overlapping_spheres_inside_signal_vs_b.png
+docs/figures/overlapping_spheres_outside_signal_vs_b.png
+```
+
+### `03_compare_non_overlapping_vs_overlapping.jl`
+
+Compares the same SWC-derived sphere substrate with:
+
+```julia
+overlapping = false
+```
+
+and:
+
+```julia
+overlapping = true
+```
+
+This script uses the same sphere positions, radii, spin distribution, b-values, and DWI sequence parameters for both cases. It is intended to validate the effect of the `overlapping` option itself.
+
+Run with:
+
+```bash
+julia +1.11 --project=. docs/scripts/04_overlapping_spheres/03_compare_non_overlapping_vs_overlapping.jl
+```
+
+Outputs:
+
+```text
+docs/data/processed/non_overlapping_vs_overlapping_signal_vs_b_data.csv
+docs/figures/non_overlapping_vs_overlapping_inside_signal_vs_b.png
+docs/figures/non_overlapping_vs_overlapping_outside_signal_vs_b.png
+```
+
+## Important note about single-sphere substrates
+
+The current example file:
+
+```text
+one_soma_list_new.swc
+```
+
+contains only one sphere. Therefore, `overlapping = false` and `overlapping = true` are expected to give very similar or identical results for this specific example.
+
+The difference between the two options becomes meaningful for substrates containing multiple spheres that geometrically overlap.
+
+## Notes
+
+This folder focuses only on the overlapping-sphere representation and the validation of the `overlapping = true` option.
+
+The next step is to compare mesh-based and overlapping-sphere representations using matched simulation parameters.
