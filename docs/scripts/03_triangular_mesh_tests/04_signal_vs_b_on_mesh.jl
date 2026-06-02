@@ -36,7 +36,7 @@ include(joinpath(@__DIR__, "utils_mesh.jl"))
 
 # %% Cell 2 — Choose mesh and output names
 
-const MESH_NAME = "cell_sphere_r19_neurons_list_new_mesh"
+const MESH_NAME = "one_soma_list_new_mesh"
 
 const OUTPUT_DIR = joinpath("docs", "data", "processed")
 const FIGURE_DIR = joinpath("docs", "figures")

@@ -19,7 +19,7 @@
 #
 # Run from the repository root with:
 #
-#   julia +1.11 --project=. docs/scripts/05_general_substrate_simulation/02_plot_single_substrate_DWI.jl
+#   julia +1.11 --project=. docs/scripts/05_general_substrate_simulation/02_plot_single_substrate_dwi.jl
 # ============================================================
 
 using CairoMakie
