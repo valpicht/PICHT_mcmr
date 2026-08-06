@@ -39,15 +39,15 @@ const SWC_NAME = "cylinder_soma_neurons_list_new"
 const RANDOM_SEED = 1234
 
 # Keep moderate for a fast validation.
-const NSPINS = 1_000
+const NSPINS = 12_000
 
 # A small b-value set is enough for a directional validation and ADC fit.
-const BVALS = [0.0, 0.5, 1.0]
+const BVALS = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
 
 const TE = 40
-const TR = 150
-const DIFFUSIVITY = 1.0
-const BBOX_MARGIN = 2.0
+const TR = 50
+const DIFFUSIVITY = 0.1
+const BBOX_MARGIN = 0.0
 
 # Manual timestep used in the original validation approach.
 #
@@ -59,7 +59,7 @@ const MANUAL_TIMESTEP = 0.01  # ms
 const DIFFUSION_DIRECTIONS = [
     ("x", [1.0, 0.0, 0.0]),
     ("y", [0.0, 1.0, 0.0]),
-    ("z", [0.0, 0.0, 1.0]),
+    #("z", [0.0, 0.0, 1.0]),
 ]
 
 # ============================================================
@@ -123,6 +123,22 @@ function get_directional_sequences(bvals, TE, direction; TR = 150)
         ),
         scanner = MRIBuilder.Siemens_Prisma,
     )
+
+    println("========== DWI sequence ==========")
+    println(ref_sequence)
+
+    println("========== Type ==========")
+    println(typeof(ref_sequence))
+
+    println("========== Property names ==========")
+    println(propertynames(ref_sequence))
+
+    println("========== Field names ==========")
+    println(fieldnames(typeof(ref_sequence)))
+
+    println("========== Full dump ==========")
+    dump(ref_sequence; maxdepth = 6)
+
 
     return MRIBuilder.adjust(
         ref_sequence,

@@ -49,7 +49,8 @@ include(joinpath(@__DIR__, "utils_cell_nm_R1_sweep.jl"))
 #   substrate_generation/example_outputs/neuromelanin_sphere_r15_neurons_list_new.swc
 #
 # Change these names if your current files have different names.
-const CELL_SWC_NAME = "cell_soma_r19_one_branche_neurons_list_new"
+#const CELL_SWC_NAME = "cell_soma_r19_one_branche_neurons_list_new"
+const CELL_SWC_NAME = "cell_sphere_r19_neurons_list_new" # no branches
 const NM_SWC_NAME = "neuromelanin_sphere_r15_neurons_list_new"
 
 # Output prefix.
@@ -82,7 +83,7 @@ const R1_BACKGROUND_S = 1.0
 # to ms^-1.
 #
 # Check carefully which convention you used before.
-const R2_GLOBAL_S = 1.0 / 3.0
+const R2_GLOBAL_S = 1.0 / 20.0e-3 # 1/3 ms^-1 in s^-1
 
 # Neuromelanin R1 sweep.
 #
@@ -100,10 +101,10 @@ const R1_NM_TOTAL_VALUES_S = default_R1_NM_values_s()
 #
 # Unit: ms
 const TE = 3
-const TR = 25
+const TR = 250
 
 # Diffusion parameter.
-const DIFFUSIVITY = 1.0
+const DIFFUSIVITY = 2.0
 
 # Number of spins.
 #
@@ -114,7 +115,12 @@ const NSPINS = 50_000
 const RANDOM_SEED = 1234
 
 # Bounding box margin around the cell + NM substrates.
-const BBOX_MARGIN = 2.0
+const R_dn = 19
+const V_dn = 4*3.14159*R_dn^3/3
+const V_tot = V_dn* 10 # assuming 10 % volume fraction of DN
+const BBOX_MARGIN = (V_tot)^(1/3) / 2 - R_dn
+println("Calculated bbox margin: ", BBOX_MARGIN)
+#const BBOX_MARGIN = 2.0
 
 # Number of TRs skipped before readout.
 #

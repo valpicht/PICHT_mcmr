@@ -44,7 +44,7 @@ include(joinpath(@__DIR__, "utils_cell_neuromelanin.jl"))
 #
 #   substrate_generation/example_outputs/
 #
-const CELL_SWC_NAME = "cell_soma_r19_one_branche_neurons_list_new"
+const CELL_SWC_NAME = "cell_sphere_r19_neurons_list_new"
 const NM_SWC_NAME = "neuromelanin_sphere_r15_neurons_list_new"
 
 # Output prefix.
@@ -57,7 +57,15 @@ const OUTPUT_PREFIX = "cell_r19_nm_r15"
 
 # Spin generation parameters.
 const NSPINS = 50_000
-const BBOX_MARGIN = 2.0
+
+const R_dn = 19
+const V_dn = 4*3.14159*R_dn^3/3
+const V_tot = V_dn* 10 # assuming 10 % volume fraction of DN
+const BBOX_MARGIN = (V_tot)^(1/3) / 2 - R_dn
+println("Calculated bbox margin: ", BBOX_MARGIN)
+#const BBOX_MARGIN = 2.0
+
+
 const RANDOM_SEED = 1234
 
 # Gradient-echo sequence parameters.
@@ -82,7 +90,7 @@ const SKIP_TR = 20
 # CELL_R1_INSIDE and NM_R1_INSIDE are additional local R1 contributions
 # inside the corresponding geometries.
 #
-const GLOBAL_R1 = 0.0
+const GLOBAL_R1 = 0.0005
 
 # In the project, the cell R1 was often kept fixed, while NM R1 was varied.
 # These values are additional local R1 contributions in ms^-1.
@@ -105,7 +113,7 @@ const NM_R1_INSIDE_VALUES = [
 # Global R2.
 #
 # Example used during the project:
-#   R2 = 1 / 3 ms^-1
+#   R2 = 1 / 3 ms^-1, this very strong R2 relaxation is employed as no crusher gradients implemented
 #
 const GLOBAL_R2 = 1.0 / 3.0
 
